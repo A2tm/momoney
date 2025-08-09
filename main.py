@@ -38,7 +38,7 @@ def trade_stocks():
     symbols = ["AAPL", "TSLA", "META", "AMZN"]
     for symbol in symbols:
         try:
-            alpaca.submit_order(symbol=symbol, qty=1, side="buy", type="market", time_in_force="gtc")
+            alpaca.submit_order(symbol=symbol, qty=.2, side="buy", type="market", time_in_force="gtc")
             send_sms(f"STOCK BUY: {symbol}")
         except Exception as e:
             print(f"Alpaca Error: {e}")
@@ -51,7 +51,7 @@ def trade_crypto():
                 'pair': pair.replace("/", ""),
                 'type': 'buy',
                 'ordertype': 'market',
-                'volume': '0.01'
+                'volume': '0.1'
             })
             send_sms(f"CRYPTO BUY: {pair}")
         except Exception as e:
