@@ -14,10 +14,13 @@ APCA_URL = os.getenv("APCA_API_BASE_URL")
 alpaca = AlpacaREST(APCA_KEY, APCA_SECRET, APCA_URL)
 
 # === Kraken Setup ===
-kraken = krakenex.API()
-kraken.load_key('kraken.key')  # use separate .key file or pass with os.getenv
-kraken.key = os.getenv("KRAKEN_API_KEY")
-kraken.secret = os.getenv("KRAKEN_SECRET_KEY")
+import krakenex
+from pykrakenapi import KrakenAPI
+
+kraken = krakenex.API(
+    key=os.getenv("KRAKEN_API_KEY"),
+    secret=os.getenv("KRAKEN_SECRET_KEY")
+)
 kraken_api = KrakenAPI(kraken)
 
 # === Twilio Setup ===
